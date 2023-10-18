@@ -21,7 +21,7 @@
             </div>
             <div class="flex flex-col w-full">
                 <p>Tgl.Terbit </p>
-                <input class="w-full bg-gray-100 py-2 rounded-md" type="text" name="tgl_terbit"></div>
+                <input id="tgl_terbit" class="w-full bg-gray-100 p-2 rounded-md" type="text" placeholder="yyyy/mm/dd" name="tgl_terbit"></div>
             <div class="flex w-full items-center justify-center space-x-2">
                 <button class="p-3 bg-blue-500 w-24 text-white text-center rounded-lg" type="submit">Simpan</button>
                 <a class="p-3 bg-red-500 w-24 text-white text-center rounded-lg" href="/buku">Batal</a>

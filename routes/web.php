@@ -16,13 +16,13 @@ use App\Http\Controllers\BukuController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome').redirect('/buku');
 });
 
 Route::get('/about', function () {
     return view('about', [
-        "name" => "naufal",
-        "email" => "naufal@gmail.com"
+        "name" => "Muhammad Rizky Aziz",
+        "email" => "muhammadrizkyaziz1404@mail.ugm.ac.id"
     ]);
 });
 
