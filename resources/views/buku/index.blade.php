@@ -43,6 +43,11 @@
             @endforeach
         </tbody>
     </table>
+    
+    @include('pagination', ['paginator' => $data_buku])
+    <div class="w-full flex flex-col items-center my-3">
+        <div class="flex flex-col">{{$data_buku->links()}}</div>
+    </div>
 
     <b>Jumlah buku adalah {{ count($data_buku) }}</b>
     <br>
