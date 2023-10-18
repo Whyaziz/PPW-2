@@ -4,6 +4,7 @@
 
 @section('content')
 <main class="p-8">
+    <h1 class="w-full text-center text-5xl font-semibold">Daftar Buku</h1>
     <div class="flex w-full justify-end my-5">
         <a class="text-center bg-blue-500 p-3 rounded-lg text-white text-decoration-none" href="{{ route('buku.create')}}">Tambah Buku</a>
     </div>
@@ -47,4 +48,24 @@
     <br>
     <b>Total harga semua buku adalah {{ "Rp ".number_format($totalharga, 2, ',', '.') }}</b>
 </main>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+    // Periksa apakah ada pesan sesi
+    var pesan = "{{ Session::get('pesan') }}";
+    
+    if (pesan) {
+        // Tampilkan pesan
+        $(".pesan-sesi").text(pesan).fadeIn(500);
+        
+        // Sembunyikan pesan setelah 5 detik
+        setTimeout(function() {
+            $(".pesan-sesi").fadeOut(500);
+        }, 3000);
+    }
+});
+</script>
+@if(Session::has('pesan'))
+    <div class="sticky bottom-0 bg-green-500 px-10 py-5 pesan-sesi text-white" style="display: none;">{{Session::get('pesan')}}</div>
+@endif
 @endsection
