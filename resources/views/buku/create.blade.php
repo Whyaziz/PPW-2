@@ -1,25 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tambah Buku</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-</head>
-<body>
-    
-    <div class="container">
-        <h4>Tambah Buku</h4>
-        <form method="post" action="{{ route('buku.store') }}">
+
+@extends('layouts.master')
+
+@section('title', 'Halaman Utama')
+
+@section('content')
+    <div class="min-h-screen bg-gray-50 flex flex-col w-full px-24 py-5">
+        <h4 class="text-center text-3xl font-semibold my-7">Tambah Buku</h4>
+        <form class="flex bg-white flex-col w-full border p-5 space-y-2" method="post" action="{{ route('buku.store') }}">
             @csrf
-            <div>Judul <input type="text" name="judul"></div>
-            <div>Penulis <input type="text" name="penulis"></div>
-            <div>Harga <input type="text" name="harga"></div>
-            <div>Tgl. Terbit <input type="text" name="tgl_terbit"></div>
-            <div><button type="submit">Simpan</button>
-            <a href="/buku">Batal</a></div>
+            <div class="flex flex-col w-full">
+                <p class="">Judul</p> 
+                <input class="w-full bg-gray-100 p-2 rounded-md" type="text" name="judul"></div>
+            <div class="flex flex-col w-full">
+                <p>Penulis </p>
+                <input class="w-full bg-gray-100 p-2 rounded-md" type="text" name="penulis">
+            </div>
+            <div class="flex flex-col w-full">
+                <p>Harga </p>
+                <input class="w-full bg-gray-100 p-2 rounded-md" type="text" name="harga">
+            </div>
+            <div class="flex flex-col w-full">
+                <p>Tgl.Terbit </p>
+                <input class="w-full bg-gray-100 py-2 rounded-md" type="text" name="tgl_terbit"></div>
+            <div class="flex w-full items-center justify-center space-x-2">
+                <button class="p-3 bg-blue-500 w-24 text-white text-center rounded-lg" type="submit">Simpan</button>
+                <a class="p-3 bg-red-500 w-24 text-white text-center rounded-lg" href="/buku">Batal</a>
+            </div>
         </form>
     </div>
-    
-</body>
-</html>
+@endsection
