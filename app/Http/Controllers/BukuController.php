@@ -14,8 +14,10 @@ class BukuController extends Controller
      */
     public function index()
     {
-        $data_buku = Buku::all();
-        $no = 0;
+        $batas = 5;
+        $jumlah_buku = Buku::count();
+        $data_buku = Buku::orderBy('id','desc')->paginate($batas);
+        $no = $batas * ($data_buku->currentPage()-1);
         $totalharga = Buku::sum('harga');
         return view('buku.index', compact('data_buku', 'no', 'totalharga'));
     }
