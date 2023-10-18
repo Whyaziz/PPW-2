@@ -39,6 +39,12 @@ class BukuController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+            'judul' => 'required|string',
+            'penulis' => 'required|string|max:30',
+            'harga' => 'required|string|numeric',
+            'tgl_terbit' => 'required|date',
+        ]);
         //
         $buku = new Buku;
         $buku->judul = $request->judul;
@@ -89,7 +95,7 @@ class BukuController extends Controller
         $buku->harga = $request->harga;
         $buku->tgl_terbit = $request->tgl_terbit;
         $buku->save();
-        return redirect('/buku');
+        return redirect('/buku')->with('pesan','Buku Berhasil Terupdate');
     }
 
     /**
@@ -103,6 +109,6 @@ class BukuController extends Controller
         //
         $buku = Buku::find($id);
         $buku->delete();
-        return redirect('buku');
+        return redirect('buku')->with('pesan','Buku Berhasil Dihapus');
     }
 }
