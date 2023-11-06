@@ -61,14 +61,14 @@ Route::get('/fpx', [MencobaController::class, 'fpxesport']);
 
 // Route::get('/', [MencobaController::class, 'beranda']);
 
-Route::get('/buku', [BukuController::class, 'index'])->middleware(['auth', 'verified'])->name('buku');
 
-Route::get('/buku/create', [BukuController::class, 'create'])->middleware(['auth', 'verified'])->name('buku.create');
+Route::middleware(['auth','admin'])->group(function () {
 
-Route::post('/buku/store', [BukuController::class, 'store'])->middleware(['auth', 'verified'])->name('buku.store');
-
-Route::post('/buku/delete/{id}', [BukuController::class, 'destroy'])->middleware(['auth', 'verified'])->name('buku.destroy');
-
-Route::get('/buku/edit/{id}', [BukuController::class, 'edit'])->middleware(['auth', 'verified'])->name('buku.edit');
-
-Route::post('/buku/update/{id}', [BukuController::class, 'update'])->middleware(['auth', 'verified'])->name('buku.update');
+    Route::get('/buku', [BukuController::class, 'index'])->middleware(['auth', 'verified'])->name('buku');
+    Route::get('/buku/create', [BukuController::class, 'create'])->middleware(['auth', 'verified'])->name('buku.create');
+    Route::post('/buku/store', [BukuController::class, 'store'])->middleware(['auth', 'verified'])->name('buku.store');
+    Route::post('/buku/delete/{id}', [BukuController::class, 'destroy'])->middleware(['auth', 'verified'])->name('buku.destroy');
+    Route::get('/buku/edit/{id}', [BukuController::class, 'edit'])->middleware(['auth', 'verified'])->name('buku.edit');
+    Route::post('/buku/update/{id}', [BukuController::class, 'update'])->middleware(['auth', 'verified'])->name('buku.update');
+    
+});
